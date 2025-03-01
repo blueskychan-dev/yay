@@ -26,8 +26,8 @@ func TestBuildRuntime(t *testing.T) {
 	cfg := &settings.Configuration{
 		Debug:       true,
 		UseRPC:      false,
-		AURURL:      "https://aur.archlinux.org",
-		AURRPCURL:   "https://aur.archlinux.org/rpc",
+		AURURL:      "https://aur.mindhas403.dev",
+		AURRPCURL:   "https://aur.mindhas403.dev/rpc",
 		BuildDir:    "/tmp",
 		VCSFilePath: "",
 		PacmanConf:  absPath,

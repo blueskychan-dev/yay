@@ -37,7 +37,7 @@ func TestGetAURPkgbuild(t *testing.T) {
 				body:    gitExtrasPKGBUILD,
 				status:  200,
 				pkgName: "git-extras",
-				wantURL: "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=git-extras",
+				wantURL: "https://aur.mindhas403.dev/cgit/aur.git/plain/PKGBUILD?h=git-extras",
 			},
 			want:    gitExtrasPKGBUILD,
 			wantErr: false,
@@ -48,7 +48,7 @@ func TestGetAURPkgbuild(t *testing.T) {
 				body:    "",
 				status:  404,
 				pkgName: "git-git",
-				wantURL: "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=git-git",
+				wantURL: "https://aur.mindhas403.dev/cgit/aur.git/plain/PKGBUILD?h=git-git",
 			},
 			want:    "",
 			wantErr: true,
@@ -64,7 +64,7 @@ func TestGetAURPkgbuild(t *testing.T) {
 				body:    tt.args.body,
 				status:  tt.args.status,
 			}
-			got, err := AURPKGBUILD(httpClient, tt.args.pkgName, "https://aur.archlinux.org")
+			got, err := AURPKGBUILD(httpClient, tt.args.pkgName, "https://aur.mindhas403.dev")
 			if tt.wantErr {
 				assert.Error(t, err)
 			} else {
@@ -81,13 +81,13 @@ func TestGetAURPkgbuild(t *testing.T) {
 // THEN a clone command should be formed
 func TestAURPKGBUILDRepo(t *testing.T) {
 	t.Parallel()
-	want := "/usr/local/bin/git --no-replace-objects -C /tmp/doesnt-exist clone --no-progress https://aur.archlinux.org/yay-bin.git yay-bin"
+	want := "/usr/local/bin/git --no-replace-objects -C /tmp/doesnt-exist clone --no-progress https://aur.mindhas403.dev/yay-bin.git yay-bin"
 	if os.Getuid() == 0 {
 		ld := "systemd-run"
 		if path, _ := exec.LookPath(ld); path != "" {
 			ld = path
 		}
-		want = fmt.Sprintf("%s --service-type=oneshot --pipe --wait --pty --quiet -p DynamicUser=yes -p CacheDirectory=yay -E HOME=/tmp  --no-replace-objects -C /tmp/doesnt-exist clone --no-progress https://aur.archlinux.org/yay-bin.git yay-bin", ld)
+		want = fmt.Sprintf("%s --service-type=oneshot --pipe --wait --pty --quiet -p DynamicUser=yes -p CacheDirectory=yay -E HOME=/tmp  --no-replace-objects -C /tmp/doesnt-exist clone --no-progress https://aur.mindhas403.dev/yay-bin.git yay-bin", ld)
 	}
 
 	cmdRunner := &testRunner{}
@@ -101,7 +101,7 @@ func TestAURPKGBUILDRepo(t *testing.T) {
 			GitFlags: []string{"--no-replace-objects"},
 		},
 	}
-	newCloned, err := AURPKGBUILDRepo(context.Background(), cmdBuilder, "https://aur.archlinux.org", "yay-bin", "/tmp/doesnt-exist", false)
+	newCloned, err := AURPKGBUILDRepo(context.Background(), cmdBuilder, "https://aur.mindhas403.dev", "yay-bin", "/tmp/doesnt-exist", false)
 	assert.NoError(t, err)
 	assert.Equal(t, true, newCloned)
 }
@@ -135,7 +135,7 @@ func TestAURPKGBUILDRepoExistsPerms(t *testing.T) {
 			GitFlags: []string{"--no-replace-objects"},
 		},
 	}
-	cloned, err := AURPKGBUILDRepo(context.Background(), cmdBuilder, "https://aur.archlinux.org", "yay-bin", dir, false)
+	cloned, err := AURPKGBUILDRepo(context.Background(), cmdBuilder, "https://aur.mindhas403.dev", "yay-bin", dir, false)
 	assert.NoError(t, err)
 	assert.Equal(t, false, cloned)
 }
@@ -158,7 +158,7 @@ func TestAURPKGBUILDRepos(t *testing.T) {
 			GitFlags: []string{},
 		},
 	}
-	cloned, err := AURPKGBUILDRepos(context.Background(), cmdBuilder, newTestLogger(), targets, "https://aur.archlinux.org", dir, false)
+	cloned, err := AURPKGBUILDRepos(context.Background(), cmdBuilder, newTestLogger(), targets, "https://aur.mindhas403.dev", dir, false)
 
 	assert.NoError(t, err)
 	assert.EqualValues(t, map[string]bool{"yay": true, "yay-bin": false, "yay-git": true}, cloned)

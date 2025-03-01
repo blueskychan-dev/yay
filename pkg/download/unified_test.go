@@ -62,7 +62,7 @@ func TestPKGBUILDReposDefinedDBPull(t *testing.T) {
 	}
 	cloned, err := PKGBUILDRepos(context.Background(), searcher, mockClient,
 		cmdBuilder, newTestLogger(),
-		targets, parser.ModeAny, "https://aur.archlinux.org", dir, false)
+		targets, parser.ModeAny, "https://aur.mindhas403.dev", dir, false)
 
 	assert.NoError(t, err)
 	assert.EqualValues(t, map[string]bool{"core/yay": false, "yay-bin": true, "yay-git": true}, cloned)
@@ -96,7 +96,7 @@ func TestPKGBUILDReposDefinedDBClone(t *testing.T) {
 	}
 	cloned, err := PKGBUILDRepos(context.Background(), searcher, mockClient,
 		cmdBuilder, newTestLogger(),
-		targets, parser.ModeAny, "https://aur.archlinux.org", dir, false)
+		targets, parser.ModeAny, "https://aur.mindhas403.dev", dir, false)
 
 	assert.NoError(t, err)
 	assert.EqualValues(t, map[string]bool{"core/yay": true, "yay-bin": true, "yay-git": true}, cloned)
@@ -130,7 +130,7 @@ func TestPKGBUILDReposClone(t *testing.T) {
 	}
 	cloned, err := PKGBUILDRepos(context.Background(), searcher, mockClient,
 		cmdBuilder, newTestLogger(),
-		targets, parser.ModeAny, "https://aur.archlinux.org", dir, false)
+		targets, parser.ModeAny, "https://aur.mindhas403.dev", dir, false)
 
 	assert.NoError(t, err)
 	assert.EqualValues(t, map[string]bool{"yay": true, "yay-bin": true, "yay-git": true}, cloned)
@@ -164,7 +164,7 @@ func TestPKGBUILDReposNotFound(t *testing.T) {
 	}
 	cloned, err := PKGBUILDRepos(context.Background(), searcher, mockClient,
 		cmdBuilder, newTestLogger(),
-		targets, parser.ModeAny, "https://aur.archlinux.org", dir, false)
+		targets, parser.ModeAny, "https://aur.mindhas403.dev", dir, false)
 
 	assert.NoError(t, err)
 	assert.EqualValues(t, map[string]bool{"yay-bin": true, "yay-git": true}, cloned)
@@ -198,7 +198,7 @@ func TestPKGBUILDReposRepoMode(t *testing.T) {
 	}
 	cloned, err := PKGBUILDRepos(context.Background(), searcher, mockClient,
 		cmdBuilder, newTestLogger(),
-		targets, parser.ModeRepo, "https://aur.archlinux.org", dir, false)
+		targets, parser.ModeRepo, "https://aur.mindhas403.dev", dir, false)
 
 	assert.NoError(t, err)
 	assert.EqualValues(t, map[string]bool{"yay": true}, cloned)
@@ -215,11 +215,11 @@ func TestPKGBUILDFull(t *testing.T) {
 			return []aur.Pkg{{}}, nil
 		},
 	}
-	gock.New("https://aur.archlinux.org").
+	gock.New("https://aur.mindhas403.dev").
 		Get("/cgit/aur.git/plain/PKGBUILD").MatchParam("h", "yay-git").
 		Reply(200).
 		BodyString("example_yay-git")
-	gock.New("https://aur.archlinux.org").
+	gock.New("https://aur.mindhas403.dev").
 		Get("/cgit/aur.git/plain/PKGBUILD").MatchParam("h", "yay-bin").
 		Reply(200).
 		BodyString("example_yay-bin")
@@ -236,7 +236,7 @@ func TestPKGBUILDFull(t *testing.T) {
 	}
 
 	fetched, err := PKGBUILDs(searcher, mockClient, &http.Client{}, newTestLogger(),
-		targets, "https://aur.archlinux.org", parser.ModeAny)
+		targets, "https://aur.mindhas403.dev", parser.ModeAny)
 
 	assert.NoError(t, err)
 	assert.EqualValues(t, map[string][]byte{
@@ -274,7 +274,7 @@ func TestPKGBUILDReposMissingAUR(t *testing.T) {
 	}
 	cloned, err := PKGBUILDRepos(context.Background(), searcher, mockClient,
 		cmdBuilder, newTestLogger(),
-		targets, parser.ModeAny, "https://aur.archlinux.org", dir, false)
+		targets, parser.ModeAny, "https://aur.mindhas403.dev", dir, false)
 
 	assert.NoError(t, err)
 	assert.EqualValues(t, map[string]bool{"core/yay": true}, cloned)

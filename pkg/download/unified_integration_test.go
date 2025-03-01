@@ -43,7 +43,7 @@ func TestIntegrationPKGBUILDReposDefinedDBClone(t *testing.T) {
 	}
 	cloned, err := PKGBUILDRepos(context.Background(), searcher, mockClient,
 		cmdBuilder, testLogger.Child("test"),
-		targets, parser.ModeAny, "https://aur.archlinux.org", dir, false)
+		targets, parser.ModeAny, "https://aur.mindhas403.dev", dir, false)
 
 	assert.NoError(t, err)
 	assert.EqualValues(t, map[string]bool{"core/linux": true, "yay-bin": true, "yay-git": true}, cloned)
@@ -72,7 +72,7 @@ func TestIntegrationPKGBUILDReposNotExist(t *testing.T) {
 	}
 	cloned, err := PKGBUILDRepos(context.Background(), searcher, mockClient,
 		cmdBuilder, testLogger.Child("test"),
-		targets, parser.ModeAny, "https://aur.archlinux.org", dir, false)
+		targets, parser.ModeAny, "https://aur.mindhas403.dev", dir, false)
 
 	assert.Error(t, err)
 	assert.EqualValues(t, map[string]bool{"yay-bin": true, "yay-git": true}, cloned)
@@ -95,7 +95,7 @@ func TestIntegrationPKGBUILDFull(t *testing.T) {
 	}
 
 	fetched, err := PKGBUILDs(searcher, mockClient, &http.Client{}, testLogger.Child("test"),
-		targets, "https://aur.archlinux.org", parser.ModeAny)
+		targets, "https://aur.mindhas403.dev", parser.ModeAny)
 
 	assert.NoError(t, err)
 

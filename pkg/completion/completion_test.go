@@ -56,13 +56,13 @@ func Test_createAURList(t *testing.T) {
 	t.Parallel()
 	doer := &mockDoer{
 		t:                t,
-		wantUrl:          "https://aur.archlinux.org/packages.gz",
+		wantUrl:          "https://aur.mindhas403.dev/packages.gz",
 		returnStatusCode: 200,
 		returnBody:       samplePackageResp,
 		returnErr:        nil,
 	}
 	out := &bytes.Buffer{}
-	err := createAURList(context.Background(), doer, "https://aur.archlinux.org", out)
+	err := createAURList(context.Background(), doer, "https://aur.mindhas403.dev", out)
 	assert.NoError(t, err)
 	gotOut := out.String()
 	assert.Equal(t, expectPackageCompletion, gotOut)
@@ -72,14 +72,14 @@ func Test_createAURListHTTPError(t *testing.T) {
 	t.Parallel()
 	doer := &mockDoer{
 		t:                t,
-		wantUrl:          "https://aur.archlinux.org/packages.gz",
+		wantUrl:          "https://aur.mindhas403.dev/packages.gz",
 		returnStatusCode: 200,
 		returnBody:       samplePackageResp,
 		returnErr:        errors.New("Not available"),
 	}
 
 	out := &bytes.Buffer{}
-	err := createAURList(context.Background(), doer, "https://aur.archlinux.org", out)
+	err := createAURList(context.Background(), doer, "https://aur.mindhas403.dev", out)
 	assert.EqualError(t, err, "Not available")
 }
 
@@ -87,13 +87,13 @@ func Test_createAURListStatusError(t *testing.T) {
 	t.Parallel()
 	doer := &mockDoer{
 		t:                t,
-		wantUrl:          "https://aur.archlinux.org/packages.gz",
+		wantUrl:          "https://aur.mindhas403.dev/packages.gz",
 		returnStatusCode: 503,
 		returnBody:       samplePackageResp,
 		returnErr:        nil,
 	}
 
 	out := &bytes.Buffer{}
-	err := createAURList(context.Background(), doer, "https://aur.archlinux.org", out)
+	err := createAURList(context.Background(), doer, "https://aur.mindhas403.dev", out)
 	assert.EqualError(t, err, "invalid status code: 503")
 }

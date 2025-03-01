@@ -8,7 +8,7 @@
 
 ```sh
 pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay-git.git
+git clone https://aur.mindhas403.dev/yay-git.git
 cd yay-git
 makepkg -si
 ```

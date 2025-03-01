@@ -191,7 +191,7 @@ func (c *Configuration) setPrivilegeElevator() error {
 
 func DefaultConfig(version string) *Configuration {
 	return &Configuration{
-		AURURL:                 "https://aur.archlinux.org",
+		AURURL:                 "https://aur.mindhas403.dev",
 		BuildDir:               os.ExpandEnv("$HOME/.cache/yay"),
 		CleanAfter:             false,
 		KeepSrc:                false,

@@ -1,6 +1,6 @@
-[![yay](https://img.shields.io/aur/version/yay?color=1793d1&label=yay&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/yay/)
-[![yay-bin](https://img.shields.io/aur/version/yay-bin?color=1793d1&label=yay-bin&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/yay-bin/)
-[![yay-git](https://img.shields.io/aur/version/yay-git?color=1793d1&label=yay-git&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/yay-git/)
+[![yay](https://img.shields.io/aur/version/yay?color=1793d1&label=yay&logo=arch-linux&style=for-the-badge)](https://aur.mindhas403.dev/packages/yay/)
+[![yay-bin](https://img.shields.io/aur/version/yay-bin?color=1793d1&label=yay-bin&logo=arch-linux&style=for-the-badge)](https://aur.mindhas403.dev/packages/yay-bin/)
+[![yay-git](https://img.shields.io/aur/version/yay-git?color=1793d1&label=yay-git&logo=arch-linux&style=for-the-badge)](https://aur.mindhas403.dev/packages/yay-git/)
 ![AUR votes](https://img.shields.io/aur/votes/yay?color=333333&style=for-the-badge)
 [![GitHub license](https://img.shields.io/github/license/jguer/yay?color=333333&style=for-the-badge)](https://github.com/Jguer/yay/blob/master/LICENSE)
 
@@ -42,7 +42,7 @@ We make sure we have the `base-devel` package group installed.
 
 ```sh
 sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
+git clone https://aur.mindhas403.dev/yay.git
 cd yay
 makepkg -si
 ```
@@ -50,7 +50,7 @@ makepkg -si
 If you want to do all of this at once, we can chain the commands like so:
 
 ```sh
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+sudo pacman -S --needed git base-devel && git clone https://aur.mindhas403.dev/yay.git && cd yay && makepkg -si
 ```
 
 ### Binary
@@ -60,7 +60,7 @@ GitHub Actions.
 
 ```sh
 sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay-bin.git
+git clone https://aur.mindhas403.dev/yay-bin.git
 cd yay-bin
 makepkg -si
 ```
@@ -68,7 +68,7 @@ makepkg -si
 If you want to do all of this at once, we can chain the commands like so:
 
 ```sh
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+sudo pacman -S --needed git base-devel && git clone https://aur.mindhas403.dev/yay-bin.git && cd yay-bin && makepkg -si
 ```
 
 ### Other distributions
